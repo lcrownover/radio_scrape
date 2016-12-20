@@ -28,7 +28,7 @@ persist_list = get_songs()
 
 while True:
     #wrap whole program in timer
-    #call main.py here
+
     time_now = str(datetime.datetime.now())
     new_list = get_songs()
     if persist_list[0] == new_list[0]:
