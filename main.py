@@ -30,13 +30,18 @@ while True:
 
     time_now = str(datetime.datetime.now())
     new_list = get_playlist_history()
+    songsplitp = r'(\s\-\s?)'
+    song_name = re.sub(songsplitp, ' ~~ ', str(new_list[0].strip()))
+    print(song_name)
+
     if persist_list[0] == new_list[0]:
-        print(new_list[0])        
+        print(new_list[0]) 
     else:
         print(new_list[0] + '  - new song! logged')
+        
         #add entry to log
         with open(log, 'a') as f:
-            f.write("{} ~~ {} \n".format(new_list[0], time_now))
+            f.write("{} ~~ {} \n".format(song_name, time_now))
             
         persist_list = new_list
     

@@ -11,18 +11,19 @@ with open('./songs_played.txt', 'r') as f:
 def get_song_play_count():
     song_names = [i[0] for i in songs_list]
 
-    unique_list = [[]]
+    unique_dict = {}
     for song_name in song_names:
-        if song_name not in unique_list:
-            unique_list.append([song_name, 1])
-        elif song_name in [song_name[0] for song_name in unique_list]:
-            unique_list[song_name][1] + 1
-    for i in sorted(unique_list):
-        print(i)
+        if song_name not in unique_dict:
+            unique_dict[song_name] = {'count': 1}
+        else:
+            unique_dict[song_name]['count'] += 1
+
+    for k,v in unique_dict.items():
+        print(k,v)
 
 
-    print("\n\n\n")
-    for i in sorted(song_names):
-        print(i)
+    # print("\n\n\n")
+    # for i in sorted(song_names):
+    #     print(i)
 
 get_song_play_count()
