@@ -5,9 +5,8 @@ import datetime
 import re
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
-from tinydb import TinyDB, where
 
-def get_songs():    
+def get_playlist_history():    
     #returns list of songs
     
     html = urlopen("http://www.stations.xyz/radio/player/293")
@@ -21,21 +20,24 @@ def get_songs():
 
     return songs
 
-db = TinyDB('./db.json')
-table = db.table('bobfm')
+
+log = './songs_played.txt'
 start_time = time.time()
-persist_list = get_songs()
+persist_list = get_playlist_history()
 
 while True:
     #wrap whole program in timer
 
     time_now = str(datetime.datetime.now())
-    new_list = get_songs()
+    new_list = get_playlist_history()
     if persist_list[0] == new_list[0]:
         print(new_list[0])        
     else:
-        print(new_list[0] + '  - new song! inserted into database.')
-        table.insert({'song': new_list[0], 'datetime': time_now})
-    persist_list = new_list
+        print(new_list[0] + '  - new song! logged')
+        #add entry to log
+        with open(log, 'a') as f:
+            f.write("{} ~~ {} \n".format(new_list[0], time_now))
+            
+        persist_list = new_list
     
     time.sleep(60.0 - ((time.time() - start_time) % 60.0))
