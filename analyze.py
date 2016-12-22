@@ -8,5 +8,3 @@ with open('./songs_played.txt', 'r') as f:
         songs_list.append(line.split(" ~~ "))
         
     print(songs_list)
-
-f.closed
