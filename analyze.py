@@ -9,7 +9,7 @@ with open('./songs_played.txt', 'r') as f:
 
 
 def get_song_play_count():
-    song_names = [i[0] for i in songs_list]
+    song_names = [i[1] for i in songs_list]
 
     unique_dict = {}
     for song_name in song_names:
