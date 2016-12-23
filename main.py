@@ -13,16 +13,22 @@ def get_playlist_history():
     soup = BeautifulSoup(html, "html.parser")
     home_playlist_raw = soup.find(id = "home_playlist")
 
-    p = r"(\<div id\=[\"\']\w+[\"\']\>\n)|(\<\/p\>)|(\<p\>)|(\n\<\/div\>)"
-    songs = re.sub(p, '~~', str(home_playlist_raw).strip())
+    songs = re.sub(pattern_html, '~~', str(home_playlist_raw).strip())
     songs = songs.strip().split('~~~~')
     songs = list(filter(None, songs))
 
     return songs
 
+#regex patterns
+pattern_html = r"(\<div id\=[\"\']\w+[\"\']\>\n)|(\<\/p\>)|(\<p\>)|(\n\<\/div\>)"
+pattern_song_artist = r'(\s\-\s?)'
 
+#main output file
 log = './songs_played.txt'
+
 start_time = time.time()
+
+#set a working list that will persist outside while loop
 persist_list = get_playlist_history()
 
 while True:
@@ -30,18 +36,13 @@ while True:
 
     time_now = str(datetime.datetime.now())
     new_list = get_playlist_history()
-    songsplitp = r'(\s\-\s?)'
-    song_name = re.sub(songsplitp, ' ~~ ', str(new_list[0].strip()))
-    print(song_name)
+    #replaces song/artist delimiter with more easily splittable pattern
+    song_artist = re.sub(pattern_song_artist, ' ~~ ', str(new_list[0].strip()))
 
-    if persist_list[0] == new_list[0]:
-        print(new_list[0]) 
-    else:
-        print(new_list[0] + '  - new song! logged')
-        
+    if persist_list[0] != new_list[0]:
         #add entry to log
         with open(log, 'a') as f:
-            f.write("{} ~~ {} \n".format(song_name, time_now))
+            f.write("{} ~~ {} \n".format(song_artist, time_now))
             
         persist_list = new_list
     
