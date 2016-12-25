@@ -1,17 +1,17 @@
-CREATE TABLE ARTISTS(
-    ARTIST_ID      INTEGER PRIMARY KEY,
-    ARTIST_NAME    TEXT                NOT NULL
+CREATE TABLE artists(
+    artist_id      INTEGER PRIMARY KEY,
+    artist_name    TEXT                NOT NULL
 );
 
-CREATE TABLE SONGS(
-    SONG_ID      INTEGER PRIMARY KEY,
-    SONG_NAME    TEXT                NOT NULL,
-    ARTIST_ID    INTEGER             NOT NULL,
-    FOREIGN KEY (ARTIST_ID) REFERENCES ARTISTS(ARTIST_ID)
+CREATE TABLE songs(
+    song_id      INTEGER PRIMARY KEY,
+    song_name    TEXT                NOT NULL,
+    artist_id    INTEGER             NOT NULL,
+    FOREIGN KEY (artist_id) REFERENCES artists(artist_id)
 );
 
-CREATE TABLE PLAYDATES(
-    DATETIME     TEXT                NOT NULL,
-    SONG_ID      INTEGER             NOT NULL,
-    FOREIGN KEY(SONG_ID) REFERENCES SONGS(SONG_ID)
+CREATE TABLE playdates(
+    datetime     TEXT                NOT NULL,
+    song_id      INTEGER             NOT NULL,
+    FOREIGN KEY(song_id) REFERENCES songs(song_id)
 );
