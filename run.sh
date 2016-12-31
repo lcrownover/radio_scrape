@@ -5,4 +5,5 @@ database="./radio_songs.db"
 if [[ ! -f $database ]]; then 
     sqlite3 radio_songs.db < schema.sql
 fi
+chmod 755 radio_songs.db
 nohup python3 main.py &>/dev/null &
