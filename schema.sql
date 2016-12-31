@@ -5,13 +5,13 @@ CREATE TABLE artists(
 
 CREATE TABLE songs(
     song_id      INTEGER PRIMARY KEY,
-    song_name    TEXT                NOT NULL,
     artist_id    INTEGER             NOT NULL,
+    song_name    TEXT                NOT NULL,
     FOREIGN KEY (artist_id) REFERENCES artists(artist_id)
 );
 
 CREATE TABLE playdates(
-    datetime     TEXT                NOT NULL,
     song_id      INTEGER             NOT NULL,
+    datetime     TEXT                NOT NULL,
     FOREIGN KEY(song_id) REFERENCES songs(song_id)
 );
