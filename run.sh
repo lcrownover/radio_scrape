@@ -1,5 +1,5 @@
 #!/bin/bash
-cp ./cron.sh /etc/cron.daily
+yes | cp -rf ./cron.sh /etc/cron.daily
 database="./radio_songs.db"
 if [[ ! -f $database ]]; then 
     sqlite3 radio_songs.db < schema.sql
