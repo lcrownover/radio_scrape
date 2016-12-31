@@ -1,6 +1,6 @@
 #!/bin/bash
-cp -rf ./cron.sh /etc/cron.daily
-chmod +x /etc/cron.daily
+cp -rf ./radio_scrape_cron.sh /etc/cron.daily
+chmod +x /etc/cron.daily/radio_scrape_cron.sh
 database="./radio_songs.db"
 if [[ ! -f $database ]]; then 
     sqlite3 radio_songs.db < schema.sql
