@@ -2,10 +2,11 @@ import sqlite3
 
 
 # Connect to db
-conn = sqlite3.connect('radio_songs.db')
+conn = sqlite3.connect(songs_db)
 c = conn.cursor()
 
-#logfile
+#files
+songs_db = '/home/lucasc/git/radio_scrape/radio_songs.db'
 songs_file = '/home/lucasc/git/radio_scrape/songs_played.txt'
 
 # ['artist','song','playdate']
