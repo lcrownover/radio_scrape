@@ -5,9 +5,12 @@ import sqlite3
 conn = sqlite3.connect('radio_songs.db')
 c = conn.cursor()
 
+#logfile
+songs_file = '/home/lucasc/git/radio_scrape/songs_played.txt'
+
 # ['artist','song','playdate']
 songs_list = []
-with open('./songs_played.txt', 'r') as f:
+with open(songs_file, 'r') as f:
     for line in f.readlines():
         songs_list.append(line.rstrip().split(" ~~ "))    
 
