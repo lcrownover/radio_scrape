@@ -1,7 +1,7 @@
 #!/bin/bash
 
-cp -rf ./radio_scrape_cron.sh /etc/cron.daily
-chmod +x /etc/cron.daily/radio_scrape_cron.sh
+cp -rf ./radio_scrape_cron /etc/cron.daily
+chmod +x /etc/cron.daily/radio_scrape_cron
 echo "Cron files copied"
 
 echo "Checking database..."
