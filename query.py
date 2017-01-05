@@ -8,11 +8,16 @@ songs_db = '/home/lucasc/code/projects/radio_scrape/radio_songs.db'
 conn = sqlite3.connect(songs_db)
 c = conn.cursor()
 
-c.execute('SELCT * FROM playdates')
+c.execute('SELECT datetime FROM playdates')
 playdates = c.fetchall()
 
+last_date = ''
+
 for date in playdates:
-    print(date)
+    date = sorted(''.join(date).split(' ')[1][:5])
+    if date == last_date:
+        print('found duplicate')
+    
 
 
 conn.close()
