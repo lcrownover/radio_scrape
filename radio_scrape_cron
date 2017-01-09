@@ -1,4 +1,6 @@
-/usr/local/bin/python3 /home/lucasc/git/radio_scrape/translate.py
+#!/bin/bash
+
+/usr/bin/python3 /home/lucasc/git/radio_scrape/translate.py
 /bin/rm -f /home/lucasc/git/radio_scrape/songs_played.txt
 /usr/bin/touch /home/lucasc/git/radio_scrape/songs_played.txt
 
