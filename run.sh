@@ -12,6 +12,6 @@ if [[ ! -f $database ]]; then
     echo "Database not found, new one created."
 fi
 
-pid="$(ps axf | grep main.py | grep -v grep | awk '{print$1}')"
 nohup python3 main.py &>/dev/null &
+pid="$(ps axf | grep main.py | grep -v grep | awk '{print$1}')"
 echo -e "Process started with pid $pid" 
