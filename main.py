@@ -34,7 +34,7 @@ persist_list = get_playlist_history()
 while True:
     #wrap whole program in timer
 
-    time_now = str(datetime.datetime.now())
+    time_now = '{:%Y-%m-%d %H:%M:%S}'.format(datetime.datetime.now())
     new_list = get_playlist_history()
     #replaces song/artist delimiter with more easily splittable pattern
     song_artist = re.sub(pattern_song_artist, ' ~~ ', str(new_list[0].strip()))
