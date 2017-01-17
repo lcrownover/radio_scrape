@@ -31,7 +31,9 @@ start_time = time.time()
 #set a working list that will persist outside while loop
 persist_list = get_playlist_history()
 
-while True:
+never_stop = True
+
+while never_stop:
     #wrap whole program in timer
 
     time_now = '{:%Y-%m-%d %H:%M:%S}'.format(datetime.datetime.now())
