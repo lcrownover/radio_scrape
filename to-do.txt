@@ -1,0 +1,3 @@
+docker implementation
+generalize paths
+
