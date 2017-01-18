@@ -24,7 +24,7 @@ pattern_html = r"(\<div id\=[\"\']\w+[\"\']\>\n)|(\<\/p\>)|(\<p\>)|(\n\<\/div\>)
 pattern_song_artist = r'(\s\-\s?)'
 
 #main output file
-log = './songs_played.txt'
+log = './songs_played.txt' 
 
 start_time = time.time()
 
