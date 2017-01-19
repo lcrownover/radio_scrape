@@ -2,7 +2,7 @@ import sqlite3
 
 
 #database
-songs_db = '/home/lucasc/code/projects/radio_scrape/radio_songs.db'
+songs_db = '/opt/radio_scrape/db/radio_songs.db'
 
 # Connect to db
 conn = sqlite3.connect(songs_db)

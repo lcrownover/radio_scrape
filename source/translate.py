@@ -1,10 +1,9 @@
 import sqlite3
-from pathlib import Path
 
 
 #files
-songs_db = Path('/home/lucasc/git/radio_scrape/radio_songs.db')
-songs_file = Path('/home/lucasc/git/radio_scrape/songs_played.txt')
+songs_db = '/opt/radio_scrape/db/radio_songs.db'
+songs_file = '/opt/radio_scrape/log/songs_played.txt'
 
 # Connect to db
 conn = sqlite3.connect(songs_db)

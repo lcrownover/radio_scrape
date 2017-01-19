@@ -1,0 +1,12 @@
+[Unit]
+Description=Radio Scrape
+
+[Service]
+ExecStart=/usr/bin/python3 /opt/radio_scrape/bin/main.py
+StandardOutput=null
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
+Alias=radio_scrape.service

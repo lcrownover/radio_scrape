@@ -19,12 +19,17 @@ def get_playlist_history():
 
     return songs
 
+def log_data(data):
+   debug = '/opt/radio_scrape/log/debug.txt'
+   with open(debug, 'a') as f:
+      f.write("{}\n".format(data))
+
 #regex patterns
 pattern_html = r"(\<div id\=[\"\']\w+[\"\']\>\n)|(\<\/p\>)|(\<p\>)|(\n\<\/div\>)"
 pattern_song_artist = r'(\s\-\s?)'
 
 #main output file
-log = './songs_played.txt' 
+log = '/opt/radio_scrape/log/songs_played.txt' 
 
 start_time = time.time()
 
@@ -37,9 +42,15 @@ while never_stop:
     #wrap whole program in timer
 
     time_now = '{:%Y-%m-%d %H:%M:%S}'.format(datetime.datetime.now())
+
+    log_data('time now: '+time_now)
+
     new_list = get_playlist_history()
     #replaces song/artist delimiter with more easily splittable pattern
     song_artist = re.sub(pattern_song_artist, ' ~~ ', str(new_list[0].strip()))
+
+    log_data(persist_list[0])
+    log_data(new_list[0])
 
     if persist_list[0] != new_list[0]:
         #add entry to log
@@ -47,5 +58,6 @@ while never_stop:
             f.write("{} ~~ {} \n".format(song_artist, time_now))
             
         persist_list = new_list
+        log_data('added entry!')
     
     time.sleep(60.0 - ((time.time() - start_time) % 60.0))

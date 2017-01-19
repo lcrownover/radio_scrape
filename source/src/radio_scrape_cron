@@ -1,0 +1,6 @@
+#!/bin/bash
+
+/usr/bin/python3 /opt/radio_scrape/db/translate.py
+/usr/bin/truncate -s 0 /opt/radio_scrape/log/songs_played.txt
+
+/bin/echo "successful entry" $(date) >> /opt/radio_scrape/log/cron-log.txt
