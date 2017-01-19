@@ -1,3 +1,6 @@
 docker implementation
-generalize paths
+
+get web server up with google graphs
+
+write pre-built queries for useful data
 
